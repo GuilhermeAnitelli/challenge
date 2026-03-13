@@ -311,11 +311,16 @@ main {
 
 /* ===== TIME / INTEGRANTES ===== */
 .time {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 280px));
+  justify-content: center;
   gap: 28px;
-  flex-wrap: nowrap;
-  height: fit-content;
   width: 100%;
+}
+
+main.integrantes-main {
+  display: block !important;
+  grid-template-columns: unset;
 }
 
 .membro {
@@ -323,7 +328,8 @@ main {
   border-radius: 18px;
   padding: 36px 32px;
   text-align: center;
-  width: 280px;
+  width: 100%;
+  max-width: 280px;
   height: fit-content;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border);
@@ -575,6 +581,7 @@ main.about-main {
   display: block !important;
   grid-template-columns: unset;
 }
+
 
 .about-hero {
   display: flex;
@@ -864,44 +871,6 @@ main.about-main {
   transform: translateY(-2px);
 }
 
-@media (max-width: 768px) {
-  .about-hero {
-    flex-direction: column;
-    padding: 36px 24px;
-    gap: 28px;
-  }
-
-  .about-hero-image {
-    width: 100%;
-  }
-
-  .about-hero-content h1 {
-    font-size: 1.7rem;
-  }
-
-  .about-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .about-mission {
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .about-functions {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 425px) {
-  .about-hero-content h1 {
-    font-size: 1.4rem;
-  }
-
-  .about-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
 
 /* ===== FOOTER ===== */
@@ -916,8 +885,17 @@ footer {
   letter-spacing: 0.02em;
 }
 
+/* ===== RESPONSIVO - 1024px ===== */
+@media (max-width: 1024px) {
+  /* Integrantes */
+  .time {
+    grid-template-columns: repeat(2, minmax(260px, 280px));
+  }
+}
+
 /* ===== RESPONSIVO — 768px ===== */
 @media (max-width: 768px) {
+  /* Global */
   header {
     padding: 12px 20px;
   }
@@ -974,22 +952,57 @@ footer {
     margin: 24px auto;
   }
 
+  .section {
+    padding: 22px 18px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  /* Integrantes */
   .membro {
     width: 100%;
     max-width: 100%;
   }
 
-  .section {
-    padding: 22px 18px;
+  .time {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
-  .time {
-    gap: 16px;
+  /* About */
+  .about-hero {
+    flex-direction: column;
+    padding: 36px 24px;
+    gap: 28px;
+  }
+
+  .about-hero-image {
+    width: 100%;
+  }
+
+  .about-hero-content h1 {
+    font-size: 1.7rem;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-mission {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .about-functions {
+    grid-template-columns: 1fr;
   }
 }
 
 /* ===== RESPONSIVO — 425px ===== */
 @media (max-width: 425px) {
+  /* Global */
   header {
     padding: 10px 14px;
     min-height: 56px;
@@ -997,6 +1010,11 @@ footer {
 
   nav {
     top: 56px;
+  }
+
+  .container {
+    padding: 0 12px;
+    margin: 18px auto;
   }
 
   .hero {
@@ -1012,11 +1030,6 @@ footer {
     font-size: 0.95rem;
   }
 
-  .container {
-    padding: 0 12px;
-    margin: 18px auto;
-  }
-
   .section {
     padding: 18px 14px;
     border-radius: 10px;
@@ -1026,22 +1039,12 @@ footer {
     font-size: 1.2rem;
   }
 
-  .features {
-    gap: 12px;
-  }
-
   .feature {
     padding: 20px 16px;
   }
 
-  .membro {
-    padding: 24px 16px;
-    border-radius: 12px;
-  }
-
-  .membro img {
-    width: 90px;
-    height: 90px;
+  .features {
+    gap: 12px;
   }
 
   .sidebar {
@@ -1067,10 +1070,27 @@ footer {
     padding: 18px 14px;
     font-size: 0.8rem;
   }
+
+  /* Integrantes */
+  .membro {
+    padding: 24px 16px;
+    border-radius: 12px;
+  }
+
+  .membro img {
+    width: 90px;
+    height: 90px;
+  }
+
+  /* About */
+  .about-hero-content h1 {
+    font-size: 1.4rem;
+  }
 }
 
 /* ===== RESPONSIVO — 375px ===== */
 @media (max-width: 375px) {
+  /* Global */
   header::before {
     font-size: 1.05rem;
   }
@@ -1107,6 +1127,7 @@ footer {
 
 /* ===== RESPONSIVO — 320px ===== */
 @media (max-width: 320px) {
+  /* Global */
   header {
     padding: 8px 10px;
     min-height: 52px;
@@ -1158,6 +1179,7 @@ footer {
     font-size: 0.95rem;
   }
 
+  /* Integrantes */
   .membro h3 {
     font-size: 0.9rem;
   }
@@ -1167,6 +1189,7 @@ footer {
     height: 80px;
   }
 
+  /* About */
   .about-content h1 {
     font-size: 1.2rem;
   }
